@@ -5,6 +5,7 @@ from authentication.forms import LoginForm
 
 def login_page(request):
     form = LoginForm()
+    message=''
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -18,4 +19,4 @@ def login_page(request):
             else :
                 message = 'Identifiants invalides'
     
-    return render(request, 'authentication/login.html', context={'message' : message})
+    return render(request, 'authentication/login.html', context={'form':form,'message' : message})
